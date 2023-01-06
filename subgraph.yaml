@@ -1,0 +1,26 @@
+specVersion: 0.0.5
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: SelfRepayingENS
+    network: mainnet
+    source:
+      address: "0xB7ca895F81F20e05A5eb11B05Cbaab3DAe5e23cd"
+      abi: SelfRepayingENS
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Subscribe
+        - Unsubscribe
+      abis:
+        - name: SelfRepayingENS
+          file: ./abis/SelfRepayingENS.json
+      eventHandlers:
+        - event: Subscribe(indexed address,indexed string,string)
+          handler: handleSubscribe
+        - event: Unsubscribe(indexed address,indexed string,string)
+          handler: handleUnsubscribe
+      file: ./src/self-repaying-ens.ts
