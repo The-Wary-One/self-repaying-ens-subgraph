@@ -25,9 +25,21 @@
     "stateMutability": "payable",
     "type": "constructor"
   },
-  { "inputs": [], "name": "FailedTransfer", "type": "error" },
-  { "inputs": [], "name": "IllegalArgument", "type": "error" },
-  { "inputs": [], "name": "Unauthorized", "type": "error" },
+  {
+    "inputs": [],
+    "name": "FailedTransfer",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "IllegalArgument",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "Unauthorized",
+    "type": "error"
+  },
   {
     "anonymous": false,
     "inputs": [
@@ -80,13 +92,29 @@
   },
   {
     "inputs": [
-      { "internalType": "string", "name": "name", "type": "string" },
-      { "internalType": "address", "name": "subscriber", "type": "address" }
+      {
+        "internalType": "string",
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "internalType": "address",
+        "name": "subscriber",
+        "type": "address"
+      }
     ],
     "name": "checker",
     "outputs": [
-      { "internalType": "bool", "name": "canExec", "type": "bool" },
-      { "internalType": "bytes", "name": "execPayload", "type": "bytes" }
+      {
+        "internalType": "bool",
+        "name": "canExec",
+        "type": "bool"
+      },
+      {
+        "internalType": "bytes",
+        "name": "execPayload",
+        "type": "bytes"
+      }
     ],
     "stateMutability": "view",
     "type": "function"
@@ -94,42 +122,90 @@
   {
     "inputs": [],
     "name": "dedicatedExecutorProxy",
-    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
     "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [
-      { "internalType": "address", "name": "subscriber", "type": "address" },
-      { "internalType": "string", "name": "name", "type": "string" }
+      {
+        "internalType": "address",
+        "name": "subscriber",
+        "type": "address"
+      },
+      {
+        "internalType": "string",
+        "name": "name",
+        "type": "string"
+      }
     ],
     "name": "getTaskId",
-    "outputs": [{ "internalType": "bytes32", "name": "", "type": "bytes32" }],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [{ "internalType": "string", "name": "name", "type": "string" }],
-    "name": "getVariableMaxGasPrice",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "outputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
     "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [
-      { "internalType": "bytes[]", "name": "data", "type": "bytes[]" }
+      {
+        "internalType": "string",
+        "name": "name",
+        "type": "string"
+      }
+    ],
+    "name": "getVariableMaxGasPrice",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes[]",
+        "name": "data",
+        "type": "bytes[]"
+      }
     ],
     "name": "multicall",
     "outputs": [
-      { "internalType": "bytes[]", "name": "results", "type": "bytes[]" }
+      {
+        "internalType": "bytes[]",
+        "name": "results",
+        "type": "bytes[]"
+      }
     ],
     "stateMutability": "nonpayable",
     "type": "function"
   },
   {
     "inputs": [
-      { "internalType": "string", "name": "name", "type": "string" },
-      { "internalType": "address", "name": "subscriber", "type": "address" }
+      {
+        "internalType": "string",
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "internalType": "address",
+        "name": "subscriber",
+        "type": "address"
+      }
     ],
     "name": "renew",
     "outputs": [],
@@ -137,20 +213,39 @@
     "type": "function"
   },
   {
-    "inputs": [{ "internalType": "string", "name": "name", "type": "string" }],
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "name",
+        "type": "string"
+      }
+    ],
     "name": "subscribe",
     "outputs": [
-      { "internalType": "bytes32", "name": "task", "type": "bytes32" }
+      {
+        "internalType": "bytes32",
+        "name": "task",
+        "type": "bytes32"
+      }
     ],
     "stateMutability": "nonpayable",
     "type": "function"
   },
   {
-    "inputs": [{ "internalType": "string", "name": "name", "type": "string" }],
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "name",
+        "type": "string"
+      }
+    ],
     "name": "unsubscribe",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
   },
-  { "stateMutability": "payable", "type": "receive" }
+  {
+    "stateMutability": "payable",
+    "type": "receive"
+  }
 ]

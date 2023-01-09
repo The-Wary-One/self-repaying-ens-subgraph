@@ -1,4 +1,8 @@
 specVersion: 0.0.5
+description: >-
+  A secure & decentralized way to address resources on and off the blockchain
+  using simple, human-readable names. Access domains and transfer history.
+repository: "https://github.com/The-Wary-One/self-repaying-ens-subgraph"
 schema:
   file: ./schema.graphql
 dataSources:
@@ -6,15 +10,19 @@ dataSources:
     name: SelfRepayingENS
     network: mainnet
     source:
-      address: "0xB7ca895F81F20e05A5eb11B05Cbaab3DAe5e23cd"
+      address: "0x0000000000000000000000000000000000000000"
       abi: SelfRepayingENS
+      startBlock: 0
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
       language: wasm/assemblyscript
       entities:
-        - Subscribe
-        - Unsubscribe
+        - SRENSSubscription
+        - Name
+        - NameSubscription
+        - SubscribeEvent
+        - UnsubscribeEvent
       abis:
         - name: SelfRepayingENS
           file: ./abis/SelfRepayingENS.json

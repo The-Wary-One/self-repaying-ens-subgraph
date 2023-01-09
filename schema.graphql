@@ -1,19 +1,56 @@
-type Subscribe @entity(immutable: true) {
-  id: Bytes!
-  subscriber: Bytes! # address
-  indexedName: String! # string
-  name: String! # string
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
+type SRENSSubscription @entity(immutable: true) {
+  "The `subscriber` address."
+  id: Bytes! # address
+  "The ens names to renew."
+  names: [NameSubscription!]! @derivedFrom(field: "subscription")
+  "All the events emitted by `subscriber`"
+  events: [SubscriptionEvent!]! @derivedFrom(field: "subscriber")
 }
 
-type Unsubscribe @entity(immutable: true) {
+type Name @entity(immutable: true) {
+  "The keccak256 hash of a name to renew."
   id: Bytes!
-  subscriber: Bytes! # address
-  indexedName: String! # string
-  name: String! # string
+  "The name to renew."
+  text: String!
+  "Its subscriber keccak256 hash."
+  subscriptions: [NameSubscription!]! @derivedFrom(field: "name")
+}
+
+"Intermediate entity to dramatically increase index and query speeds."
+type NameSubscription @entity {
+  id: Bytes!
+  subscription: SRENSSubscription!
+  name: Name!
+}
+
+interface SubscriptionEvent {
+  id: Bytes!
+  subscriber: SRENSSubscription!
+  indexedName: Bytes!
+  name: String!
+  transactionHash: Bytes!
   blockNumber: BigInt!
   blockTimestamp: BigInt!
+}
+
+"The raw `Subscribe` event."
+type SubscribeEvent implements SubscriptionEvent @entity(immutable: true) {
+  id: Bytes!
+  subscriber: SRENSSubscription!
+  indexedName: Bytes!
+  name: String!
   transactionHash: Bytes!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+}
+
+"The raw `Unsubscribe` event."
+type UnsubscribeEvent implements SubscriptionEvent @entity(immutable: true) {
+  id: Bytes!
+  subscriber: SRENSSubscription!
+  indexedName: Bytes!
+  name: String!
+  transactionHash: Bytes!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
 }
