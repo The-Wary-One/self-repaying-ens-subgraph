@@ -12,7 +12,7 @@ type Name @entity(immutable: true) {
   id: Bytes!
   "The name to renew."
   text: String!
-  "Its subscriber keccak256 hash."
+  "Its subscriptions."
   subscriptions: [NameSubscription!]! @derivedFrom(field: "name")
 }
 

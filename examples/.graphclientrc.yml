@@ -1,0 +1,43 @@
+sources:
+  - name: self-repaying-ens
+    handler:
+      graphql:
+        endpoint: http://localhost:8000/subgraphs/name/self-repaying-ens
+    transforms:
+      - filterSchema:
+          filters:
+            - Query.!{nameSubscription, nameSubscriptions}
+      - rename:
+          renames:
+            - from:
+                type: Query
+                field: srenssubscription
+              to:
+                type: Query
+                field: subscription
+            - from:
+                type: Query
+                field: srenssubscriptions
+              to:
+                type: Query
+                field: subscriptions
+
+  - name: ens
+    handler:
+      graphql:
+        endpoint: https://api.thegraph.com/subgraphs/name/ensdomains/ens
+
+additionalTypeDefs: |
+  extend type Name {
+    # FIXME: N+1 problem.
+    registration: Registration!
+    #registration: Registration! @resolveTo(
+    #  sourceName: "ens",
+    #  sourceTypeName: "Query",
+    #  sourceFieldName: "registrations",
+    #  keyField: "text",
+    #  keysArg: "where.labelName_in"
+  }
+
+additionalResolvers:
+  - "./resolvers"
